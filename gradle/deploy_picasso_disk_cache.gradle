@@ -1,0 +1,15 @@
+ext {
+    artifactLib = 'picasso-disk-cache'
+    libraryName = 'com.mercadolibre.android.picasso.disk.cache'
+    libraryDescription = 'A Picasso wrapper that caches images on disk'
+    siteUrl = 'https://github.com/mercadolibre/picasso-disk-cache'
+    gitUrl = 'https://github.com/mercadolibre/picasso-disk-cache.git'
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    groupName = "com.mercadolibre.android"
+}
+
+group = groupName
+archivesBaseName = artifactLib
+
+apply from:"$rootDir/gradle/base_deploy.gradle"

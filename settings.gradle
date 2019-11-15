@@ -1,0 +1,2 @@
+include ':app', ':picasso-disk-cache'
+rootProject.name='PicassoDiskCache'
