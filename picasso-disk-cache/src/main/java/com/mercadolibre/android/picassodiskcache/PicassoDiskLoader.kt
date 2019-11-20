@@ -2,7 +2,6 @@ package com.mercadolibre.android.picassodiskcache
 
 import android.annotation.SuppressLint
 import android.content.Context
-import com.mercadolibre.android.picassodiskcache.BuildConfig
 import com.squareup.picasso.Picasso
 
 object PicassoDiskLoader {

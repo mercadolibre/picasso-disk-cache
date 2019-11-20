@@ -15,11 +15,12 @@ class SampleActivity : AppCompatActivity() {
         PicassoDiskLoader
             .get(this)
             .load(
-                "https://i.pinimg.com/originals/a7/87/88/a78788d285a647701307d615d5d2a08b.jpg"
+                "https://mobile.mercadolibre.com/remote_resources/image/buflo_payment_card_visa-debito-white?density=xhdpi&locale=en"
+
             )
             .into(sampleImage)
 
         sampleImage2
-            .loadImage("https://files.merca20.com/uploads/2018/03/Super-Mario-Nintendo-Bigstock.jpg")
+            .loadImage("https://i.pinimg.com/originals/a7/87/88/a78788d285a647701307d615d5d2a08b.jpg")
     }
 }

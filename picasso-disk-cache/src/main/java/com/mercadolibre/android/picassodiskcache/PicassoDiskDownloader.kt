@@ -6,7 +6,11 @@ import android.net.Uri
 import android.os.StatFs
 import com.squareup.picasso.Downloader
 import com.squareup.picasso.NetworkPolicy
-import okhttp3.*
+import okhttp3.Cache
+import okhttp3.CacheControl
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.logging.HttpLoggingInterceptor
 import java.io.File
 import java.io.IOException
 import java.util.*
@@ -14,10 +18,24 @@ import kotlin.math.max
 import kotlin.math.min
 
 
-internal class PicassoDiskDownloader constructor(private val client: OkHttpClient) : Downloader {
-    private val cache: Cache? = client.cache()
+internal class PicassoDiskDownloader constructor(builder: OkHttpClient.Builder) : Downloader {
+    private val client: OkHttpClient
+    private val cache: Cache?
 
-    private var sharedClient = true
+    init {
+        if (BuildConfig.DEBUG) {
+            val loginInterceptor = HttpLoggingInterceptor()
+            loginInterceptor.level = HttpLoggingInterceptor.Level.BODY
+            builder.addInterceptor(loginInterceptor)
+        }
+        builder.addNetworkInterceptor {
+            val response = it.proceed(it.request())
+            response.newBuilder().request(it.call().request())
+                .header("cache-control", "max-age=31536000, immutable").build()
+        }
+        client = builder.build()
+        cache = client.cache()
+    }
 
     /**
      * Create new downloader that uses OkHttp. This will install an image cache into the specified
@@ -32,10 +50,8 @@ internal class PicassoDiskDownloader constructor(private val client: OkHttpClien
                 cacheDir,
                 maxSize
             )
-        ).build()
-    ) {
-        sharedClient = false
-    }
+        )
+    )
 
     /**
      * Create new downloader that uses OkHttp. This will install an image cache into the specified
@@ -75,18 +91,7 @@ internal class PicassoDiskDownloader constructor(private val client: OkHttpClien
         TrafficStats.setThreadStatsTag(THREAD_STATS_TAG)
 
         return client.newCall(builder.build()).execute()?.let {
-            val responseCode = it.code()
-            val body = it.body()
-            if (responseCode >= 300) {
-                body?.close()
-                TrafficStats.clearThreadStatsTag()
-                throw Downloader.ResponseException(
-                    "$responseCode ${it.message()}", networkPolicy,
-                    responseCode
-                )
-            }
-
-            body?.run {
+            it.body()?.run {
                 Downloader.Response(
                     byteStream(),
                     it.cacheResponse() != null,
@@ -97,7 +102,7 @@ internal class PicassoDiskDownloader constructor(private val client: OkHttpClien
     }
 
     override fun shutdown() {
-        cache?.takeIf { !sharedClient }?.apply {
+        cache?.apply {
             try {
                 close()
             } catch (ignored: IOException) {
