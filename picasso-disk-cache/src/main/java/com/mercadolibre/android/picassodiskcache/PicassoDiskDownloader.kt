@@ -30,11 +30,24 @@ internal class PicassoDiskDownloader constructor(builder: OkHttpClient.Builder) 
         }
         builder.addNetworkInterceptor {
             val response = it.proceed(it.request())
-            response.newBuilder().request(it.call().request())
-                .header("cache-control", "max-age=31536000, immutable").build()
+            if (response.isSuccessful) {
+                val newBuilder = response.newBuilder()
+                newBuilder.request(replaceUrlInRequest(response.request(), it.call().request()))
+                if (response.headers().get("cache-control") == null) {
+                    newBuilder.header("cache-control", "max-age=31536000, immutable").build()
+                }
+                newBuilder.build()
+            } else {
+                response
+            }
         }
         client = builder.build()
         cache = client.cache()
+    }
+
+    private fun replaceUrlInRequest(request: Request, anotherRequest: Request) : Request {
+        val url = anotherRequest.url()
+        return request.newBuilder().url(url).build()
     }
 
     /**
