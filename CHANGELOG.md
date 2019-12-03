@@ -1,3 +1,7 @@
+## VERSION 1.0.3
+_03_12_2019_
+* Fixed internet permission.
+
 ## VERSION 1.0.2
 _26_11_2019_
 * Fixed header verification.
