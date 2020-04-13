@@ -28,6 +28,11 @@ fun <T : ImageView> T.loadImage(
                 onError?.invoke()
             }
 
+            // Method needed to support picasso 2.+ latest version
+            fun onError(e: Exception?) {
+                onError?.invoke()
+            }
+
             override fun onSuccess() {
                 onDone?.invoke()
             }

@@ -1,3 +1,7 @@
+## VERSION 1.0.4
+_13_04_2020_
+* Add support for Picasso 2.7+
+
 ## VERSION 1.0.3
 _03_12_2019_
 * Fixed internet permission.

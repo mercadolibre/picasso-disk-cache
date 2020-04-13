@@ -20,6 +20,7 @@ object Dependencies {
 
     // Picasso
     const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
+    const val picassoTestApp = "com.squareup.picasso:picasso:${Versions.picassoTestApp}" // intended to maintain compatibility
 
     // OkHttp
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"

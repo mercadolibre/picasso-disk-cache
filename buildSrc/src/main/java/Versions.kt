@@ -1,6 +1,6 @@
 object Versions {
 
-    const val versionToDeploy = "1.0.3"
+    const val versionToDeploy = "1.0.4"
 
     const val compileSdkVersion = 28
     const val minSdkVersion = 19
@@ -12,4 +12,5 @@ object Versions {
     const val gradleKotlin = "1.3.50"
     const val okHttp = "3.11.0"
     const val picasso = "2.5.2"
+    const val picassoTestApp = "2.71828"
 }
