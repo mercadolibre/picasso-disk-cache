@@ -26,4 +26,5 @@ dependencies {
     implementation Dependencies.kotlinStdlib
     implementation Dependencies.appCompat
     implementation Dependencies.constraintLayout
+    implementation Dependencies.picassoTestApp
 }
