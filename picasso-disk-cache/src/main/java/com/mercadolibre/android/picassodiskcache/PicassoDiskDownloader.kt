@@ -25,6 +25,7 @@ internal class PicassoDiskDownloader constructor(builder: OkHttpClient.Builder) 
             loginInterceptor.level = HttpLoggingInterceptor.Level.BODY
             builder.addInterceptor(loginInterceptor)
         }
+        builder.addInterceptor(StrictModeInterceptor())
         builder.addNetworkInterceptor {
             val response = it.proceed(it.request())
             if (response.isSuccessful) {
