@@ -1,6 +1,6 @@
 object Versions {
 
-    const val versionToDeploy = "1.0.4"
+    const val versionToDeploy = "1.0.5"
 
     const val compileSdkVersion = 28
     const val minSdkVersion = 19
