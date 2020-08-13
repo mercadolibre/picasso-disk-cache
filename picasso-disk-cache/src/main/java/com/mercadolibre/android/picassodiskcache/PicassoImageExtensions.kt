@@ -11,25 +11,15 @@ fun <T : ImageView> T.loadImage(
     onError: (() -> Unit)? = null,
     onDone: (() -> Unit)? = null
 ) {
-
     context?.run {
         val load = if (saveInDisk) {
-            PicassoDiskLoader
-                .get(this)
-                .load(imageUrl)
+            PicassoDiskLoader.get(this).load(imageUrl)
         } else {
-            Picasso
-                .with(this)
-                .load(imageUrl)
+            Picasso.get().load(imageUrl)
         }
 
         val callback = object : Callback {
-            override fun onError() {
-                onError?.invoke()
-            }
-
-            // Method needed to support picasso 2.+ latest version
-            fun onError(e: Exception?) {
+            override fun onError(e: Exception?) {
                 onError?.invoke()
             }
 

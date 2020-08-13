@@ -2,25 +2,23 @@ object Dependencies {
 
     // Gradle
     const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
-    const val gradleKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.gradleKotlin}"
+    const val gradleKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
 
     // Deploy
-    const val bintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
-    const val maven = "com.github.dcendents:android-maven-gradle-plugin:2.1"
+    const val bintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:${Versions.bintray}"
+    const val maven = "com.github.dcendents:android-maven-gradle-plugin:${Versions.maven}"
 
     // Kotlin
-    const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.gradleKotlin}"
+    const val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 
     // AppCompat
-    const val appCompat = "com.android.support:appcompat-v7:${Versions.appcompat}"
+    const val appCompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
 
     // ConstraintLayout
-    const val constraintLayout =
-        "com.android.support.constraint:constraint-layout:${Versions.constraintLayout}"
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
     // Picasso
     const val picasso = "com.squareup.picasso:picasso:${Versions.picasso}"
-    const val picassoTestApp = "com.squareup.picasso:picasso:${Versions.picassoTestApp}" // intended to maintain compatibility
 
     // OkHttp
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
