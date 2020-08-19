@@ -4,11 +4,12 @@ apply plugin: 'kotlin-android-extensions'
 apply from:"$rootDir/gradle/deploy_picasso_disk_cache.gradle"
 
 android {
-    compileSdkVersion Versions.compileSdkVersion
+    compileSdkVersion Versions.sdkVersion
+    buildToolsVersion Versions.buildTools
 
     defaultConfig {
         minSdkVersion Versions.minSdkVersion
-        targetSdkVersion Versions.targetSdkVersion
+        targetSdkVersion Versions.sdkVersion
         versionName Versions.versionToDeploy
 
         consumerProguardFiles 'consumer-rules.pro'
