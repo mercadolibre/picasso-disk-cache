@@ -3,14 +3,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion Versions.sdkVersion
+    buildToolsVersion Versions.buildToolsVersion
+
     defaultConfig {
         applicationId "com.mercadolibre.android.picassodiskcache"
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion Versions.minSdkVersion
+        targetSdkVersion Versions.sdkVersion
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -26,5 +29,7 @@ dependencies {
     implementation Dependencies.kotlinStdlib
     implementation Dependencies.appCompat
     implementation Dependencies.constraintLayout
-    implementation Dependencies.picassoTestApp
+    implementation(Dependencies.picassoTestApp) {
+        force true
+    }
 }
