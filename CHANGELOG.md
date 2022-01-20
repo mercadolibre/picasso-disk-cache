@@ -1,3 +1,7 @@
+## VERSION 1.1.1
+_XX_08_2020_
+* No changes from 1.0.5
+
 ## VERSION 1.0.5
 _14_05_2020_
 * Fix strict mode violation error
