@@ -1,3 +1,10 @@
+## VERSION 1.2.0
+_20_01_2022_
+* Migrates to AndroidX
+* Migrates to Gradle 6
+* Migrates to min api 21 and target 30
+* Migrates to nexus repository
+
 ## VERSION 1.1.1
 _XX_08_2020_
 * No changes from 1.0.5

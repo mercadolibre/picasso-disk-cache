@@ -1,7 +1,7 @@
 package com.mercadolibre.android.picassodiskcache.example
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.mercadolibre.android.picassodiskcache.PicassoDiskLoader
 import com.mercadolibre.android.picassodiskcache.loadImage
 import kotlinx.android.synthetic.main.activity_main.*
